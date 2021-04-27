@@ -25,8 +25,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern .gitignore ./",
+    "lint:fix": "npm run lint -- --fix",
+    "test:typescript": "tsc --pretty --noEmit",
+    "precommit": "lint-staged",
+    "prepush": "npm run test:typescript",
+    "storybook": "start-storybook -p 6006"
   },
   "eslintConfig": {
     "extends": [
