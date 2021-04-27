@@ -18,26 +18,19 @@ import {
 } from 'styled-system'
 import { rem } from 'polished'
 
-/* Typeface */
-// Constants
-const BASE_FONT_SIZE = '16px'
-
-// Interface
 export interface TypeProps<ThemeType extends Theme = RequiredTheme> {
   type?: ResponsiveValue<string | {}, ThemeType>
 }
 
-// Helpers
-export const pxToRem = (pxUnit: number, base = BASE_FONT_SIZE) => rem(pxUnit, base)
-export const remToPx = (remUnit: number, base = BASE_FONT_SIZE) => remUnit * Number.parseFloat(base)
+export const pxToRem = (pxUnit: number, base = '16px') => rem(pxUnit, base)
+export const remToPx = (remUnit: number, base = '16px') => remUnit * Number.parseFloat(base)
 
-// Maps
 export const FontSizeMap = {
   s: pxToRem(14),
-  m: pxToRem(Number.parseInt(BASE_FONT_SIZE)),
-  l: pxToRem(30),
-  xl: pxToRem(50),
-  xxl: pxToRem(65),
+  m: pxToRem(16),
+  l: pxToRem(24),
+  xl: pxToRem(32),
+  xxl: pxToRem(64),
 }
 
 export const FontWeightMap = {
@@ -47,24 +40,30 @@ export const FontWeightMap = {
 }
 
 export const FontFamilyMap = {
-  default: '"Nunito", sans-serif',
+  default: '"Arial","sans-serif"',
 }
 
-// Styled system declarations
 const FontFamilyConfig: ConfigStyle = {
   property: 'fontFamily',
   scale: 'fonts',
 }
 
-// Styled system configurations
 const TypePropsConfig: Config = {
   type: FontFamilyConfig,
 }
 
-export const type: styleFn = system(TypePropsConfig)
+export const ColorsMap = {
+  primary: '#1da1f2',
+  secondary: '#EFF1F2',
+  background: '##F7F9FA',
+}
 
-/* Colors */
-// Interface
+export const BorderRadiusMap = {
+  default: '16px',
+  buttons: '9999px',
+}
+
+export const type: styleFn = system(TypePropsConfig)
 export interface TextColorProps<
   ThemeType extends Theme = RequiredTheme,
   TVal = ThemeValue<'colors', ThemeType>
@@ -86,27 +85,6 @@ export interface ColorProps<
 > extends TextColorProps<ThemeType, TVal>,
     BackgroundColorProps<ThemeType, TVal> {}
 
-// Maps
-export const ColorsMap = {
-  primary: '#633B6D',
-  secondary: '#333333',
-  background: '#F6F2E8',
-  white: '#FFFFFF',
-  lightBlack: '#606060',
-  black: '#333333',
-  darkSand: '#D6C9AE',
-  sand: '#F6F2E8',
-  lightSand: '#FFFCF4',
-  success: '#55AE79',
-  warning: '#FFB82E',
-  error: '#FD7F72',
-  info: '#5B7781',
-  grey: '#5B7781',
-  primaryHover: '#633B6D',
-  secondaryHover: '#333333',
-}
-
-// Styled system declarations
 const ColorConfig: ConfigStyle = {
   property: 'color',
   scale: 'colors',
@@ -122,7 +100,6 @@ const BackgroundColorConfig: ConfigStyle = {
   scale: 'colors',
 }
 
-// Styled system configurations
 const ColorPropsConfig: Config = {
   textColor: ColorConfig,
   bg: BackgroundConfig,
@@ -131,14 +108,6 @@ const ColorPropsConfig: Config = {
 
 export const color: styleFn = system(ColorPropsConfig)
 
-/* Borders */
-// Maps
-export const BorderRadiusMap = {
-  sm: '10px',
-  md: '16px',
-}
-
-// Theme export
 export const ThemeConfig = {
   breakpoints: ['578px', '986px', '1400px'],
   colors: ColorsMap,
@@ -148,8 +117,6 @@ export const ThemeConfig = {
   radii: BorderRadiusMap,
 }
 
-/* Layout */
-// Helpers
 export const layoutExclSize: styleFn = compose(
   minWidth,
   maxWidth,
