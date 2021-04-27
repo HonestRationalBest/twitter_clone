@@ -9,7 +9,7 @@ import {
   SpaceProps,
   textAlign,
 } from 'styled-system'
-import { color, ColorProps, type, TypeProps } from '../../../utils/Theme'
+import { color, ColorProps, type, TypeProps } from '../../utils/Theme'
 
 export interface TextProps
   extends SpaceProps,

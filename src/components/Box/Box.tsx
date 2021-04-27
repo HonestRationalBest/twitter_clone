@@ -17,7 +17,7 @@ import {
   background,
   BackgroundProps,
 } from 'styled-system'
-import { color, ColorProps } from '../../../utils/Theme'
+import { color, ColorProps } from '../../utils/Theme'
 
 export interface BoxProps
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -30,8 +30,6 @@ export interface BoxProps
     GridProps,
     BackgroundProps {}
 
-const Box = styled.div<BoxProps>(
+export const Box = styled.div<BoxProps>(
   compose(display, space, color, layout, position, flexbox, grid, background)
 )
-
-export default Box
