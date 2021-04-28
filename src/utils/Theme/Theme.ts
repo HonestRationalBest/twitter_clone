@@ -54,6 +54,7 @@ const TypePropsConfig: Config = {
 
 export const ColorsMap = {
   primary: '#1da1f2',
+  white: '#ffffff',
   secondary: '#EFF1F2',
   background: '##F7F9FA',
 }

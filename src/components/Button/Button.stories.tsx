@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
-import { Button, ButtonProps } from './Button'
-
-const Template: Story<ButtonProps> = ({ ...args }) => <Button {...args} />
+import { Button } from './Button'
 
 export default {
   title: 'Elements/Button',
@@ -22,9 +20,3 @@ export default {
     },
   },
 } as Meta
-
-export const SmallLink = Template.bind({})
-
-SmallLink.args = {
-  content: 'Example',
-}
