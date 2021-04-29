@@ -5,7 +5,7 @@ import SignIn from './pages/SignIn/SingIn'
 function App() {
   return (
     <Switch>
-      <Route path="/" render={() => SignIn()} />
+      <Route path="/" component={SignIn} />
       <Route />
       <Route />
     </Switch>

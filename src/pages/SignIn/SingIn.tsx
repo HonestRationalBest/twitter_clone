@@ -1,11 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
+import { makeStyles } from '@material-ui/core'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormControl from '@material-ui/core/FormControl'
+import TextField from '@material-ui/core/TextField'
+import SearchIcon from '@material-ui/icons/Search'
+import PeopleIcon from '@material-ui/icons/PeopleOutline'
+import MessageIcon from '@material-ui/icons/ModeCommentOutlined'
 import { BorderRadiusMap, ColorsMap, FontSizeMap, FontWeightMap } from '../../utils/Theme'
 import { Box } from '../../components/Box'
 import { Button } from '../../components/Button'
 import { Text } from '../../components/Text'
+import { ModalBlock } from '../../components/ModalBlock'
 import twitterIcon from '../../static/twitter.svg'
 import twitterIconBlue from '../../static/twitterBlue.svg'
+
+interface SingInProps {}
 
 const SingInBackground = styled.section`
   background-image: url(https://abs.twimg.com/sticky/illustrations/lohp_1302x955.png);
@@ -27,8 +37,94 @@ const TwitterIconBlue = styled.img`
   width: 2.625rem;
   height: 2.25rem;
 `
+export const useStylesSignIn = makeStyles((theme) => ({
+  wrapper: {
+    display: 'flex',
+    height: '100vh',
+  },
+  blueSide: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#71C9F8',
+    flex: '0 0 50%',
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  blueSideBigIcon: {
+    position: 'absolute',
+    left: '50%',
+    top: '53%',
+    transform: 'translate(-50%, -50%)',
+    width: '350%',
+    height: '350%',
+  },
+  blueSideListInfo: {
+    position: 'relative',
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    width: 380,
+    '& h6': {
+      display: 'flex',
+      alignItems: 'center',
+      color: 'white',
+      fontWeight: 700,
+      fontSize: 20,
+    },
+  },
+  blueSideListInfoItem: {
+    marginBottom: 40,
+  },
+  blueSideListInfoIcon: {
+    fontSize: 32,
+    marginRight: 15,
+  },
+  loginSide: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: '0 0 50%',
+  },
+  loginSideTwitterIcon: {
+    fontSize: 45,
+  },
+  loginSideWrapper: {
+    width: 380,
+  },
+  loginSideTitle: {
+    fontWeight: 700,
+    fontSize: 32,
+    marginBottom: 60,
+    marginTop: 20,
+  },
+  loginSideField: {
+    marginBottom: 18,
+  },
+  registerField: {
+    marginBottom: theme.spacing(5),
+  },
+  loginFormControl: {
+    marginBottom: theme.spacing(2),
+  },
+}))
 
-const SingIn = () => {
+const SingIn: React.FC<SingInProps> = () => {
+  const classes = useStylesSignIn()
+  const [visibleModal, setVisibleModal] = React.useState<'signIn' | 'signUp'>()
+
+  const handleClickOpenSignIn = (): void => {
+    setVisibleModal('signIn')
+  }
+
+  const handleClickOpenSignUp = (): void => {
+    setVisibleModal('signUp')
+  }
+
+  const handleCloseModal = (): void => {
+    setVisibleModal(undefined)
+  }
+
   return (
     <Box display="grid" gridTemplateColumns="6.7fr 5.3fr" gridGap="2rem">
       <SingInBackground>
@@ -44,6 +140,7 @@ const SingIn = () => {
         </Text>
         <Box maxWidth="23.5rem">
           <Button
+            onClick={handleClickOpenSignUp}
             backgroundColor={ColorsMap.primary}
             borderRadius={BorderRadiusMap.buttons}
             border="0"
@@ -55,6 +152,7 @@ const SingIn = () => {
             Зарегестрироваться
           </Button>
           <Button
+            onClick={handleClickOpenSignIn}
             backgroundColor={ColorsMap.white}
             borderRadius={BorderRadiusMap.buttons}
             borderColor={ColorsMap.primary}
@@ -67,6 +165,92 @@ const SingIn = () => {
           >
             Войти
           </Button>
+          <ModalBlock
+            classes={classes}
+            visible={visibleModal === 'signIn'}
+            onClose={handleCloseModal}
+            title="Войти в аккаунт"
+          >
+            <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
+              <FormGroup aria-label="position" row>
+                <TextField
+                  className={classes.loginSideField}
+                  autoFocus
+                  id="email"
+                  label="E-Mail"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="email"
+                  fullWidth
+                />
+                <TextField
+                  className={classes.loginSideField}
+                  autoFocus
+                  id="password"
+                  label="Пароль"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="password"
+                  fullWidth
+                />
+                <Button onClick={handleCloseModal} color="primary">
+                  Войти
+                </Button>
+              </FormGroup>
+            </FormControl>
+          </ModalBlock>
+          <ModalBlock
+            classes={classes}
+            visible={visibleModal === 'signUp'}
+            onClose={handleCloseModal}
+            title="Создайте учетную запись"
+          >
+            <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
+              <FormGroup aria-label="position" row>
+                <TextField
+                  className={classes.registerField}
+                  autoFocus
+                  id="name"
+                  label="Имя"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="name"
+                  fullWidth
+                />
+                <TextField
+                  className={classes.registerField}
+                  autoFocus
+                  id="email"
+                  label="E-Mail"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="email"
+                  fullWidth
+                />
+                <TextField
+                  className={classes.registerField}
+                  autoFocus
+                  id="password"
+                  label="Пароль"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="filled"
+                  type="password"
+                  fullWidth
+                />
+                <Button color="primary">Далее</Button>
+              </FormGroup>
+            </FormControl>
+          </ModalBlock>
         </Box>
       </Box>
     </Box>
