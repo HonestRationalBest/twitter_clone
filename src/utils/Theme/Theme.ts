@@ -57,6 +57,7 @@ export const ColorsMap = {
   white: '#ffffff',
   secondary: '#EFF1F2',
   background: '##F7F9FA',
+  hover: 'rgba(29, 161, 242, 0.1)',
 }
 
 export const BorderRadiusMap = {
