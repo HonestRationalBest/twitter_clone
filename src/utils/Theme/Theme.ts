@@ -55,8 +55,10 @@ const TypePropsConfig: Config = {
 export const ColorsMap = {
   primary: '#1da1f2',
   white: '#ffffff',
-  secondary: '#EFF1F2',
+  secondary: 'rgb(91, 112, 131)',
+  borders: 'rgb(235, 238, 240)',
   background: '##F7F9FA',
+  hover: 'rgba(29, 161, 242, 0.1)',
 }
 
 export const BorderRadiusMap = {
