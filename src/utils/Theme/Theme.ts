@@ -26,8 +26,8 @@ export const pxToRem = (pxUnit: number, base = '16px') => rem(pxUnit, base)
 export const remToPx = (remUnit: number, base = '16px') => remUnit * Number.parseFloat(base)
 
 export const FontSizeMap = {
-  s: pxToRem(14),
-  m: pxToRem(16),
+  s: pxToRem(13),
+  m: pxToRem(17),
   l: pxToRem(24),
   xl: pxToRem(32),
   xxl: pxToRem(64),

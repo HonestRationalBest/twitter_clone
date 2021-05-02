@@ -10,7 +10,7 @@ import { IconButton, Typography } from '@material-ui/core'
 import { Button } from '../Button'
 
 import { useHomeStyles } from '../../pages/Home/Home'
-import { BorderRadiusMap, ColorsMap, FontSizeMap, pxToRem } from '../../utils/Theme'
+import { BorderRadiusMap, ColorsMap, FontSizeMap, FontWeightMap, pxToRem } from '../../utils/Theme'
 
 interface SideMenuProps {
   classes: ReturnType<typeof useHomeStyles>
@@ -84,11 +84,13 @@ export const SideMenu: React.FC<SideMenuProps> = ({
           maxWidth={pxToRem(220)}
           width="100%"
           backgroundColor={ColorsMap.primary}
-          fontSize={FontSizeMap.m}
+          fontSize={FontSizeMap.s}
+          fontWeight={FontWeightMap.bold}
           border="0"
           borderRadius={BorderRadiusMap.buttons}
           textColor={ColorsMap.white}
-          paddingY="0.7rem"
+          py="0.7rem"
+          mt="1rem"
         >
           Твитнуть
         </Button>

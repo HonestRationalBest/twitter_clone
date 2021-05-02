@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Box } from '../../components/Box'
-import { ColorsMap, pxToRem } from '../../utils/Theme'
+import { ColorsMap, FontSizeMap, pxToRem } from '../../utils/Theme'
 import twitterIconBlue from '../../static/twitterBlue.svg'
 import { SideMenu } from '../../components/SideMenu/SideMenu'
 import {
@@ -21,15 +21,12 @@ import { AccountToggle } from '../../components/AccountToggle/AccountToggle'
 interface HomeProps {}
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
-  wrapper: {
-    height: '100vh',
-  },
   logo: {
     margin: '10px 0',
     color: ColorsMap.primary,
   },
   logoIcon: {
-    fontSize: 36,
+    fontSize: `${FontSizeMap.l}`,
   },
   sideMenuList: {
     listStyle: 'none',
@@ -58,22 +55,17 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
       padding: '0 25px 0 20px',
       borderRadius: 30,
       height: 50,
-      marginBottom: 15,
       transition: 'background-color 0.1s ease-in-out',
     },
   },
   sideMenuListItemLabel: {
     fontWeight: 700,
-    fontSize: 20,
+    fontSize: `${FontSizeMap.m}`,
     marginLeft: 15,
   },
   sideMenuListItemIcon: {
-    fontSize: 32,
+    fontSize: `${FontSizeMap.l}`,
     marginLeft: -5,
-  },
-  sideMenuTweetButton: {
-    padding: theme.spacing(3.2),
-    marginTop: theme.spacing(2),
   },
   tweetsWrapper: {
     borderRadius: 0,
@@ -128,7 +120,7 @@ const Home: React.FC<HomeProps> = () => {
     >
       <Box>
         <SideMenu classes={classes} />
-        <Box mt="6rem">
+        <Box mt="10rem">
           <AccountToggle
             name="Pavel"
             userId="@Pavel28665992"

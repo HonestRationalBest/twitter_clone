@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useHomeStyles } from '../../pages/Home/Home'
-import { BorderRadiusMap, ColorsMap, FontWeightMap, pxToRem } from '../../utils/Theme'
+import { BorderRadiusMap, ColorsMap, FontSizeMap, FontWeightMap, pxToRem } from '../../utils/Theme'
 import { Box } from '../Box'
 import { Text } from '../Text'
 
@@ -53,10 +53,10 @@ const HiddenAccountListWrapper = styled.div`
   max-width: ${pxToRem(240)};
   width: 100%;
   height: ${pxToRem(60)};
-  padding-top: 0.5rem;
 `
 
 const HiddenAccountList = styled.ul`
+  margin: 0.5rem;
   padding: 0;
   list-style: none;
 `
@@ -91,22 +91,24 @@ export const AccountToggle: React.FC<AccountToggleProps> = ({
                   alt="userIcon"
                 />
                 <Box>
-                  <Text m="0" fontWeight={FontWeightMap.bold}>
+                  <Text m="0" fontWeight={FontWeightMap.bold} fontSize={FontSizeMap.s}>
                     {name}
                   </Text>
-                  <Text my="0.3rem" textColor={ColorsMap.secondary}>
+                  <Text my="0.3rem" textColor={ColorsMap.secondary} fontSize={FontSizeMap.s}>
                     {userId}
                   </Text>
                 </Box>
               </HiddenAccountListWrapper>
             </HiddenAccountListItem>
             <HiddenAccountListItem>
-              <Text ml="0.5rem" mb="0.1rem">
-                Выйти из учётной записи
-              </Text>
-              <Text ml="0.5rem" mt="0">
-                {userId}
-              </Text>
+              <Box py="0.3rem">
+                <Text ml="0.5rem" mb="0.1rem" fontSize={FontSizeMap.s}>
+                  Выйти из учётной записи
+                </Text>
+                <Text ml="0.5rem" mt="0" fontSize={FontSizeMap.s}>
+                  {userId}
+                </Text>
+              </Box>
             </HiddenAccountListItem>
           </HiddenAccountList>
         </HiddenAccount>
@@ -120,10 +122,10 @@ export const AccountToggle: React.FC<AccountToggleProps> = ({
           alt="userIcon"
         />
         <Box>
-          <Text m="0" fontWeight={FontWeightMap.bold}>
+          <Text m="0" fontWeight={FontWeightMap.bold} fontSize={FontSizeMap.s}>
             {name}
           </Text>
-          <Text my="0.3rem" textColor={ColorsMap.secondary}>
+          <Text my="0.3rem" textColor={ColorsMap.secondary} fontSize={FontSizeMap.s}>
             {userId}
           </Text>
         </Box>

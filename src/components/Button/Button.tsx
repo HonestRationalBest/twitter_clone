@@ -24,6 +24,8 @@ import {
   padding,
   FontSizeProps,
   fontSize,
+  FontWeightProps,
+  fontWeight,
 } from 'styled-system'
 import { color, ColorProps } from '../../utils/Theme'
 
@@ -40,7 +42,8 @@ export interface BoxProps
     BorderRadiusProps,
     BorderProps,
     PaddingProps,
-    FontSizeProps {}
+    FontSizeProps,
+    FontWeightProps {}
 
 export const Button = styled.button<BoxProps>(
   compose(
@@ -55,6 +58,7 @@ export const Button = styled.button<BoxProps>(
     borderRadius,
     border,
     padding,
-    fontSize
+    fontSize,
+    fontWeight
   )
 )
