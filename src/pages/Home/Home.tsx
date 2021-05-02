@@ -1,22 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Box } from '../../components/Box'
 import { ColorsMap, FontSizeMap, pxToRem } from '../../utils/Theme'
-import twitterIconBlue from '../../static/twitterBlue.svg'
-import { SideMenu } from '../../components/SideMenu/SideMenu'
-import {
-  Container,
-  createStyles,
-  Grid,
-  InputBase,
-  makeStyles,
-  Paper,
-  Theme,
-  Typography,
-  withStyles,
-} from '@material-ui/core'
-import grey from '@material-ui/core/colors/grey'
 import { AccountToggle } from '../../components/AccountToggle/AccountToggle'
+import { Box } from '../../components/Box'
+import { SideMenu } from '../../components/SideMenu/SideMenu'
+import { makeStyles, Theme } from '@material-ui/core'
+import grey from '@material-ui/core/colors/grey'
 
 interface HomeProps {}
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useHomeStyles } from '../../pages/Home/Home'
 import { BorderRadiusMap, ColorsMap, FontSizeMap, FontWeightMap, pxToRem } from '../../utils/Theme'
 import { Box } from '../Box'
 import { Text } from '../Text'

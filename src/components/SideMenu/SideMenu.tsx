@@ -1,4 +1,7 @@
 import React from 'react'
+import { useHomeStyles } from '../../pages/Home/Home'
+import { BorderRadiusMap, ColorsMap, FontSizeMap, FontWeightMap, pxToRem } from '../../utils/Theme'
+import { Button } from '../Button'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import SearchIcon from '@material-ui/icons/Search'
 import NotificationIcon from '@material-ui/icons/NotificationsNoneOutlined'
@@ -7,10 +10,6 @@ import BookmarkIcon from '@material-ui/icons/BookmarkBorderOutlined'
 import ListIcon from '@material-ui/icons/ListAltOutlined'
 import UserIcon from '@material-ui/icons/PermIdentityOutlined'
 import { IconButton, Typography } from '@material-ui/core'
-import { Button } from '../Button'
-
-import { useHomeStyles } from '../../pages/Home/Home'
-import { BorderRadiusMap, ColorsMap, FontSizeMap, FontWeightMap, pxToRem } from '../../utils/Theme'
 
 interface SideMenuProps {
   classes: ReturnType<typeof useHomeStyles>
