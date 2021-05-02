@@ -128,11 +128,13 @@ const Home: React.FC<HomeProps> = () => {
     >
       <Box>
         <SideMenu classes={classes} />
-        <AccountToggle
-          name="Pavel"
-          userId="@Pavel28665992"
-          avaSrc="https://i.picsum.photos/id/413/536/354.jpg?hmac=gWzeJ37G-MqxxyO9UpTc_dK2Bu77KvFEugYCzbdHXOA"
-        />
+        <Box mt="6rem">
+          <AccountToggle
+            name="Pavel"
+            userId="@Pavel28665992"
+            avaSrc="https://i.picsum.photos/id/413/536/354.jpg?hmac=gWzeJ37G-MqxxyO9UpTc_dK2Bu77KvFEugYCzbdHXOA"
+          />
+        </Box>
       </Box>
       <Box backgroundColor="#c4c">Главная</Box>
       <Box backgroundColor="#4c4">Поиск</Box>
