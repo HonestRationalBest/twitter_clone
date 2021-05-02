@@ -6,7 +6,7 @@ import Home from './pages/Home/Home'
 function App() {
   return (
     <Switch>
-      <Route exact path="/" render={() => SignIn()} />
+      <Route exact path="/" component={SignIn} />
       <Route path="/home" component={Home} />
       <Route />
       <Route />
