@@ -1,10 +1,14 @@
 import React from 'react'
-import { ColorsMap, FontSizeMap, pxToRem } from '../../utils/Theme'
+import styled from 'styled-components'
+import { ColorsMap, FontSizeMap, FontFamilyMap, FontWeightMap, pxToRem } from '../../utils/Theme'
 import { AccountToggle } from '../../components/AccountToggle/AccountToggle'
 import { Box } from '../../components/Box'
 import { SideMenu } from '../../components/SideMenu/SideMenu'
-import { makeStyles, Theme } from '@material-ui/core'
+import { makeStyles, Paper, Theme } from '@material-ui/core'
 import grey from '@material-ui/core/colors/grey'
+import { Text } from '../../components/Text'
+import { Tweet } from '../../components/Tweet'
+import { NewTweetSection } from '../../components/NewTweetSection'
 
 interface HomeProps {}
 
@@ -66,7 +70,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     borderLeft: '0',
     borderRight: '0',
     borderRadius: 0,
-    padding: '10px 15px',
+    padding: '0.625rem 1rem',
     '& h6': {
       fontWeight: 800,
     },
@@ -76,7 +80,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     paddingTop: 15,
     paddingLeft: 20,
     '&:hover': {
-      backgroundColor: 'rgb(245, 248, 250)',
+      backgroundColor: `${ColorsMap.hover}`,
     },
   },
   tweetAvatar: {
@@ -93,7 +97,51 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   tweetUserName: {
     color: grey[500],
   },
+  textarea: {
+    width: '100%',
+    resize: 'none',
+    fontFamily: `${FontFamilyMap.default}`,
+    marginTop: '0.5rem',
+    marginLeft: '0.5rem',
+    border: 0,
+  },
+  textareaIcons: {
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    width: 230,
+    display: 'flex',
+  },
+  textareaIconsItem: {
+    cursor: 'pointer',
+    '&:hover': {
+      '& div': {
+        backgroundColor: ColorsMap.hover,
+        '& h6': {
+          color: ColorsMap.primary,
+        },
+        '& svg path': {
+          fill: ColorsMap.primary,
+        },
+      },
+    },
+    '& div': {
+      display: 'inline-flex',
+      alignItems: 'center',
+      position: 'relative',
+      borderRadius: 30,
+      height: 50,
+      transition: 'background-color 0.1s ease-in-out',
+    },
+    '& button': {
+      margin: 0,
+    },
+  },
 }))
+
+const TweetHeader = styled.div`
+  border-bottom: 1px solid ${ColorsMap.borders};
+`
 
 const Home: React.FC<HomeProps> = () => {
   const classes = useHomeStyles()
@@ -107,16 +155,50 @@ const Home: React.FC<HomeProps> = () => {
       margin="0 auto"
     >
       <Box>
-        <SideMenu classes={classes} />
-        <Box mt="10rem">
-          <AccountToggle
-            name="Pavel"
-            userId="@Pavel28665992"
-            avaSrc="https://i.picsum.photos/id/413/536/354.jpg?hmac=gWzeJ37G-MqxxyO9UpTc_dK2Bu77KvFEugYCzbdHXOA"
-          />
+        <Box position="fixed">
+          <SideMenu classes={classes} />
+          <Box mt="15rem">
+            <AccountToggle
+              name="Pavel"
+              userId="@Pavel28665992"
+              avaSrc="https://i.picsum.photos/id/413/536/354.jpg?hmac=gWzeJ37G-MqxxyO9UpTc_dK2Bu77KvFEugYCzbdHXOA"
+            />
+          </Box>
         </Box>
       </Box>
-      <Box backgroundColor="#c4c">Главная</Box>
+      <Box>
+        {' '}
+        <Box
+          height="100%"
+          borderLeft="1px solid #000"
+          borderLeftColor={ColorsMap.borders}
+          borderRight="1px solid #000"
+          borderRightColor={ColorsMap.borders}
+        >
+          <TweetHeader>
+            <Text as="h6" fontWeight={FontWeightMap.bold} py="0.7rem" m="0 0 0 1rem">
+              Главная
+            </Text>
+          </TweetHeader>
+          <Box pb="0.5rem">
+            <NewTweetSection classes={classes} />
+          </Box>
+          {[
+            ...new Array(20).fill(
+              <Tweet
+                text="Петиция чтобы в каждой пачке сухариков всегда лежал один большой в три слоя обсыпанный химическими специями царь-сухарик."
+                user={{
+                  fullname: 'Glafira Zhur',
+                  username: 'GlafiraZhur',
+                  avatarUrl:
+                    'https://images.unsplash.com/photo-1528914457842-1af67b57139d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+                }}
+                classes={classes}
+              />
+            ),
+          ]}
+        </Box>
+      </Box>
       <Box backgroundColor="#4c4">Поиск</Box>
     </Box>
   )

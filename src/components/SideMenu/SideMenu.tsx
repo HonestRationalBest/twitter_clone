@@ -80,7 +80,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       </li>
       <li className={classes.sideMenuListItem}>
         <Button
-          maxWidth={pxToRem(220)}
+          maxWidth={pxToRem(200)}
           width="100%"
           backgroundColor={ColorsMap.primary}
           fontSize={FontSizeMap.s}

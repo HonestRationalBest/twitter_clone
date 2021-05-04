@@ -16,6 +16,8 @@ import {
   GridProps,
   background,
   BackgroundProps,
+  BorderProps,
+  border,
 } from 'styled-system'
 import { color, ColorProps } from '../../utils/Theme'
 
@@ -28,8 +30,9 @@ export interface BoxProps
     PositionProps,
     FlexboxProps,
     GridProps,
-    BackgroundProps {}
+    BackgroundProps,
+    BorderProps {}
 
 export const Box = styled.div<BoxProps>(
-  compose(display, space, color, layout, position, flexbox, grid, background)
+  compose(display, space, color, layout, position, flexbox, grid, background, border)
 )
