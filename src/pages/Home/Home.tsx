@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ColorsMap, FontSizeMap, FontWeightMap, pxToRem } from '../../utils/Theme'
+import { ColorsMap, FontSizeMap, FontFamilyMap, FontWeightMap, pxToRem } from '../../utils/Theme'
 import { AccountToggle } from '../../components/AccountToggle/AccountToggle'
 import { Box } from '../../components/Box'
 import { SideMenu } from '../../components/SideMenu/SideMenu'
@@ -8,6 +8,7 @@ import { makeStyles, Paper, Theme } from '@material-ui/core'
 import grey from '@material-ui/core/colors/grey'
 import { Text } from '../../components/Text'
 import { Tweet } from '../../components/Tweet'
+import { NewTweetSection } from '../../components/NewTweetSection'
 
 interface HomeProps {}
 
@@ -69,7 +70,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     borderLeft: '0',
     borderRight: '0',
     borderRadius: 0,
-    padding: '10px 15px',
+    padding: '0.625rem 1rem',
     '& h6': {
       fontWeight: 800,
     },
@@ -95,6 +96,46 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   },
   tweetUserName: {
     color: grey[500],
+  },
+  textarea: {
+    width: '100%',
+    resize: 'none',
+    fontFamily: `${FontFamilyMap.default}`,
+    marginTop: '0.5rem',
+    marginLeft: '0.5rem',
+    border: 0,
+  },
+  textareaIcons: {
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    width: 230,
+    display: 'flex',
+  },
+  textareaIconsItem: {
+    cursor: 'pointer',
+    '&:hover': {
+      '& div': {
+        backgroundColor: ColorsMap.hover,
+        '& h6': {
+          color: ColorsMap.primary,
+        },
+        '& svg path': {
+          fill: ColorsMap.primary,
+        },
+      },
+    },
+    '& div': {
+      display: 'inline-flex',
+      alignItems: 'center',
+      position: 'relative',
+      borderRadius: 30,
+      height: 50,
+      transition: 'background-color 0.1s ease-in-out',
+    },
+    '& button': {
+      margin: 0,
+    },
   },
 }))
 
@@ -139,6 +180,9 @@ const Home: React.FC<HomeProps> = () => {
               Главная
             </Text>
           </TweetHeader>
+          <Box pb="0.5rem">
+            <NewTweetSection classes={classes} />
+          </Box>
           {[
             ...new Array(20).fill(
               <Tweet

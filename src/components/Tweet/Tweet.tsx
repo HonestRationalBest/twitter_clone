@@ -56,11 +56,13 @@ export const Tweet: React.FC<TweetProps> = ({
               <IconButton>
                 <RepostIcon style={{ fontSize: 20 }} />
               </IconButton>
+              <span>1</span>
             </div>
             <div>
               <IconButton>
                 <LikeIcon style={{ fontSize: 20 }} />
               </IconButton>
+              <span>1</span>
             </div>
             <div>
               <IconButton>
