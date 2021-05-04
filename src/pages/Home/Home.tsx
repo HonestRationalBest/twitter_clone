@@ -9,7 +9,7 @@ import grey from '@material-ui/core/colors/grey'
 import { Text } from '../../components/Text'
 import { Tweet } from '../../components/Tweet'
 import { NewTweetSection } from '../../components/NewTweetSection'
-
+import { SearchInput } from '../../components/SearchInput'
 interface HomeProps {}
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
@@ -137,6 +137,9 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
       margin: 0,
     },
   },
+  searchIcon: {
+    fill: ColorsMap.secondary,
+  },
 }))
 
 const TweetHeader = styled.div`
@@ -149,7 +152,7 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <Box
       display="grid"
-      gridTemplateColumns="2fr 4.3fr 2.7fr"
+      gridTemplateColumns="3.5fr 3.5fr 4.7fr"
       gridGap="0rem 2rem"
       maxWidth={pxToRem(1070)}
       margin="0 auto"
@@ -199,7 +202,9 @@ const Home: React.FC<HomeProps> = () => {
           ]}
         </Box>
       </Box>
-      <Box backgroundColor="#4c4">Поиск</Box>
+      <Box backgroundColor="#4c4">
+        <SearchInput classes={classes} />
+      </Box>
     </Box>
   )
 }
