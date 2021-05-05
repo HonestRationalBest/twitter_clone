@@ -4,11 +4,13 @@ import { ColorsMap, FontSizeMap, FontFamilyMap, FontWeightMap, pxToRem } from '.
 import { AccountToggle } from '../../components/AccountToggle/AccountToggle'
 import { Box } from '../../components/Box'
 import { SideMenu } from '../../components/SideMenu/SideMenu'
-import { makeStyles, Paper, Theme } from '@material-ui/core'
+import { makeStyles, Theme } from '@material-ui/core'
 import grey from '@material-ui/core/colors/grey'
 import { Text } from '../../components/Text'
 import { Tweet } from '../../components/Tweet'
 import { NewTweetSection } from '../../components/NewTweetSection'
+import { SearchInput } from '../../components/SearchInput'
+import { InfoBlock } from '../../components/InfoBlock'
 
 interface HomeProps {}
 
@@ -146,10 +148,25 @@ const TweetHeader = styled.div`
 const Home: React.FC<HomeProps> = () => {
   const classes = useHomeStyles()
 
+  const testArrayTheme = [
+    { theme: 'Понимаю', tweetsCount: '2131' },
+    { theme: 'Понимаю', tweetsCount: '2131' },
+  ]
+
+  const testArrayChanel = [
+    {
+      name: 'Alexey Navalny',
+      chanelId: '@navalny',
+      avaSrc:
+        'https://i.picsum.photos/id/413/536/354.jpg?hmac=gWzeJ37G-MqxxyO9UpTc_dK2Bu77KvFEugYCzbdHXOA',
+      avaAlt: 'avaAlt',
+    },
+  ]
+
   return (
     <Box
       display="grid"
-      gridTemplateColumns="2fr 4.3fr 2.7fr"
+      gridTemplateColumns="4.4fr 1.6fr 6fr"
       gridGap="0rem 2rem"
       maxWidth={pxToRem(1070)}
       margin="0 auto"
@@ -199,7 +216,13 @@ const Home: React.FC<HomeProps> = () => {
           ]}
         </Box>
       </Box>
-      <Box backgroundColor="#4c4">Поиск</Box>
+      <Box mt="0.5rem">
+        <Box position="fixed">
+          <SearchInput classes={classes} />
+          <InfoBlock blockName="Актуальные темы для вас" items={testArrayTheme} type="theme" />
+          <InfoBlock blockName="Кого читать" items={testArrayChanel} type="chanel" />
+        </Box>
+      </Box>
     </Box>
   )
 }

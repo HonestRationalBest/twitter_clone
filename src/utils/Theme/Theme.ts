@@ -61,6 +61,8 @@ export const ColorsMap = {
   hover: 'rgba(29, 161, 242, 0.1)',
   error: 'rgb(224, 36, 94)',
   warning: 'rgb(255, 173, 31)',
+  infoblock: 'rgb(247, 249, 250)',
+  infoblockHover: 'rgba(0,0,0,0.03)',
 }
 
 export const BorderRadiusMap = {

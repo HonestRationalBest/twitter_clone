@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import {
-  BorderRadiusMap,
-  ColorsMap,
-  FontFamilyMap,
-  FontSizeMap,
-  FontWeightMap,
-  pxToRem,
-} from '../../utils/Theme'
+import { BorderRadiusMap, ColorsMap, FontSizeMap, FontWeightMap, pxToRem } from '../../utils/Theme'
 import TextareaAutosize from 'react-textarea-autosize'
 import { Box } from '../Box'
 import { useHomeStyles } from '../../pages/Home/Home'
-import { CircularProgress, IconButton } from '@material-ui/core'
+import { IconButton } from '@material-ui/core'
 import CropOriginalIcon from '@material-ui/icons/CropOriginal'
 import MoodIcon from '@material-ui/icons/Mood'
 import { Button } from '../Button'
@@ -61,6 +54,7 @@ export const NewTweetSection: React.FC<NewTweetSectionProps> = ({
           placeholder="Что происходит?"
           className={classes.textarea}
           onChange={(e) => setTextAreaContent(e.target.value)}
+          value={textAreaContent}
         />
         <Line />
         <Box display="flex" alignItems="center" justifyContent="space-between" width="100%">
