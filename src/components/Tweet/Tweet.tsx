@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import classNames from 'classnames'
 import CommentIcon from '@material-ui/icons/ChatBubbleOutlineOutlined'
 import RepostIcon from '@material-ui/icons/RepeatOutlined'
