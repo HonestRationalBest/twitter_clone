@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import CircularProgress, { CircularProgressProps } from '@material-ui/core/CircularProgress'
-import Typography from '@material-ui/core/Typography'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import Box from '@material-ui/core/Box'
 import { makeStyles, Theme } from '@material-ui/core'
 import { ColorsMap, FontSizeMap } from '../../utils/Theme'
 import { Text } from '../Text'
-import { fontSize } from 'styled-system'
 
 export interface CircularStaticProps {
   text: string
