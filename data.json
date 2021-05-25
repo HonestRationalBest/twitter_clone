@@ -1,0 +1,94 @@
+{
+  "tweets": [
+    {
+      "_id": "609a55efe15bf0888a1d0d92",
+      "text": "velit pariatur aliquip aliqua fugiat dolor incididunt excepteur esse ea",
+      "user": {
+        "fullname": "Marisa Wynn",
+        "username": "alston",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?7"
+      }
+    },
+    {
+      "_id": "609a55efdb38bf6dc31b7583",
+      "text": "aliqua consequat enim esse nisi nulla reprehenderit fugiat quis incididunt",
+      "user": {
+        "fullname": "Sheree Hale",
+        "username": "bates",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?5"
+      }
+    },
+    {
+      "_id": "609a55ef756e73ceb8394b7a",
+      "text": "sunt do amet enim quis amet sint ipsum in ad",
+      "user": {
+        "fullname": "Yolanda Lester",
+        "username": "stephanie",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?3"
+      }
+    },
+    {
+      "_id": "609a55effab503cd0cc0a672",
+      "text": "eiusmod labore voluptate sunt minim enim fugiat aliqua enim consequat",
+      "user": {
+        "fullname": "Vinson Moss",
+        "username": "evangeline",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?1"
+      }
+    },
+    {
+      "_id": "609a55ef2868f4655e5bfa51",
+      "text": "adipisicing ex consequat aliqua cillum aliquip in fugiat occaecat dolore",
+      "user": {
+        "fullname": "Mattie Fisher",
+        "username": "hoover",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?8"
+      }
+    },
+    {
+      "_id": "609a55ef98268942ae05bdea",
+      "text": "eu proident esse dolor anim culpa sit aliquip sunt ex",
+      "user": {
+        "fullname": "Tricia Vargas",
+        "username": "jaclyn",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?3"
+      }
+    },
+    {
+      "_id": "609a55efeb5e2e843e9b933b",
+      "text": "deserunt est elit esse quis in cupidatat esse deserunt officia",
+      "user": {
+        "fullname": "Rachael Powers",
+        "username": "mabel",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?8"
+      }
+    },
+    {
+      "_id": "609a55efe2210b12311e4dc7",
+      "text": "sit qui Lorem exercitation aliquip nostrud irure ut magna aliqua",
+      "user": {
+        "fullname": "Rene Norton",
+        "username": "melody",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?9"
+      }
+    },
+    {
+      "_id": "609a55ef99c8e2559461a9a9",
+      "text": "velit nostrud amet proident laborum tempor officia enim aliqua minim",
+      "user": {
+        "fullname": "Mercer Bright",
+        "username": "glenn",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?4"
+      }
+    },
+    {
+      "_id": "609a55efde908c180005e5ae",
+      "text": "laboris ea nulla aute officia aliquip voluptate amet qui nostrud",
+      "user": {
+        "fullname": "Kerri Lowe",
+        "username": "dominique",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?4"
+      }
+    }
+  ]
+}
