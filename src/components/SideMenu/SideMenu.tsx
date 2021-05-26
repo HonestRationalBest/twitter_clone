@@ -1,7 +1,5 @@
 import React from 'react'
-import { useHomeStyles } from '../../pages/Home/Home'
 import { BorderRadiusMap, ColorsMap, FontSizeMap, FontWeightMap, pxToRem } from '../../utils/Theme'
-import { Button } from '../Button'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import SearchIcon from '@material-ui/icons/Search'
 import NotificationIcon from '@material-ui/icons/NotificationsNoneOutlined'
@@ -9,15 +7,74 @@ import MessageIcon from '@material-ui/icons/EmailOutlined'
 import BookmarkIcon from '@material-ui/icons/BookmarkBorderOutlined'
 import ListIcon from '@material-ui/icons/ListAltOutlined'
 import UserIcon from '@material-ui/icons/PermIdentityOutlined'
-import { IconButton, Typography } from '@material-ui/core'
+import { IconButton, makeStyles, Theme, Typography } from '@material-ui/core'
 
-interface SideMenuProps {
-  classes: ReturnType<typeof useHomeStyles>
-}
+interface SideMenuProps {}
 
-export const SideMenu: React.FC<SideMenuProps> = ({
-  classes,
-}: SideMenuProps): React.ReactElement => {
+export const useSideMenuStyles = makeStyles((theme: Theme) => ({
+  logo: {
+    margin: '10px 0',
+    color: ColorsMap.primary,
+  },
+  logoIcon: {
+    fontSize: `${FontSizeMap.l}`,
+  },
+  sideMenuList: {
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    width: 230,
+  },
+  sideMenuListItem: {
+    cursor: 'pointer',
+    '&:hover': {
+      '& div': {
+        backgroundColor: ColorsMap.hover,
+        '& h6': {
+          color: ColorsMap.primary,
+        },
+        '& svg path': {
+          fill: ColorsMap.primary,
+        },
+      },
+    },
+    '& div': {
+      display: 'inline-flex',
+      alignItems: 'center',
+      position: 'relative',
+      padding: '0 25px 0 20px',
+      borderRadius: 30,
+      height: 50,
+      transition: 'background-color 0.1s ease-in-out',
+    },
+  },
+  sideMenuListItemButton: {
+    maxWidth: pxToRem(200),
+    width: '100%',
+    backgroundColor: ColorsMap.primary,
+    fontSize: FontSizeMap.s,
+    fontWeight: FontWeightMap.bold,
+    border: 0,
+    borderRadius: BorderRadiusMap.buttons,
+    textColor: ColorsMap.white,
+    padding: '0.7rem 0',
+    marginTop: '1rem',
+    color: ColorsMap.white,
+  },
+  sideMenuListItemLabel: {
+    fontWeight: 700,
+    fontSize: `${FontSizeMap.m}`,
+    marginLeft: 15,
+  },
+  sideMenuListItemIcon: {
+    fontSize: `${FontSizeMap.l}`,
+    marginLeft: -5,
+  },
+}))
+
+export const SideMenu: React.FC<SideMenuProps> = (): React.ReactElement => {
+  const classes = useSideMenuStyles()
+
   return (
     <ul className={classes.sideMenuList}>
       <li className={classes.sideMenuListItem}>
@@ -79,20 +136,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         </div>
       </li>
       <li className={classes.sideMenuListItem}>
-        <Button
-          maxWidth={pxToRem(200)}
-          width="100%"
-          backgroundColor={ColorsMap.primary}
-          fontSize={FontSizeMap.s}
-          fontWeight={FontWeightMap.bold}
-          border="0"
-          borderRadius={BorderRadiusMap.buttons}
-          textColor={ColorsMap.white}
-          py="0.7rem"
-          mt="1rem"
-        >
-          Твитнуть
-        </Button>
+        <button className={classes.sideMenuListItemButton}>Твитнуть</button>
       </li>
     </ul>
   )

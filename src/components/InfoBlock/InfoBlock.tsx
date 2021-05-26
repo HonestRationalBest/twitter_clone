@@ -1,11 +1,9 @@
 //@ts-nocheck
+import { makeStyles, Theme } from '@material-ui/core'
 import React from 'react'
-import styled from 'styled-components'
 import { ColorsMap, FontWeightMap, BorderRadiusMap, FontSizeMap } from '../../utils/Theme'
-import { Box } from '../Box'
 import { InfoBlockChanel, InfoBlockChanelProps } from '../InfoBlockChanel/InfoBlockChanel'
 import { InfoBlockTheme, InfoBlockThemeProps } from '../InfoBlockTheme/InfoBlockTheme'
-import { Text } from '../Text'
 
 export interface InfoBlockProps {
   blockName: string
@@ -13,32 +11,44 @@ export interface InfoBlockProps {
   type: 'theme' | 'chanel'
 }
 
-const Wrapper = styled.div`
-  background: ${ColorsMap.infoblock};
-  border-radius: ${BorderRadiusMap.default};
-  margin-top: 1rem;
-`
-
-const Footer = styled.section`
-  border-top: 1px solid ${ColorsMap.borders};
-  border-radius: 0 0 ${BorderRadiusMap.default} ${BorderRadiusMap.default};
-  &:hover {
-    background: ${ColorsMap.infoblockHover};
-  }
-`
+export const useInfoBlockStyles = makeStyles((theme: Theme) => ({
+  wrapper: {
+    background: ColorsMap.infoblock,
+    borderRadius: BorderRadiusMap.default,
+    marginTop: '1rem',
+  },
+  header: {
+    '& h3': {
+      fontWeight: FontWeightMap.black,
+      fontSize: FontSizeMap.m,
+      padding: '0.5rem 0 0 0.8rem',
+    },
+  },
+  footer: {
+    borderTop: `1px solid ${ColorsMap.borders}`,
+    borderRadius: `0 0 ${BorderRadiusMap.default} ${BorderRadiusMap.default}`,
+    '&:hover': {
+      background: ColorsMap.infoblockHover,
+    },
+    ' & p': {
+      color: ColorsMap.primary,
+      padding: '0.7rem 0 0.7rem 0.8rem',
+      fontSize: FontSizeMap.s,
+    },
+  },
+}))
 
 export const InfoBlock: React.FC<InfoBlockProps> = ({
   blockName,
   items,
   type,
 }: InfoBlockProps): React.ReactElement => {
+  const classes = useInfoBlockStyles()
   return (
-    <Wrapper>
-      <Box>
-        <Text as="h3" fontWeight={FontWeightMap.black} pt="0.5rem" pl="0.8rem">
-          {blockName}
-        </Text>
-      </Box>
+    <div className={classes.wrapper}>
+      <div className={classes.header}>
+        <h3 as="h3">{blockName}</h3>
+      </div>
       {type === 'theme'
         ? items.map((el) => {
             return <InfoBlockTheme theme={el.theme} tweetsCount={el.tweetsCount} />
@@ -53,11 +63,9 @@ export const InfoBlock: React.FC<InfoBlockProps> = ({
               />
             )
           })}
-      <Footer>
-        <Text as="p" textColor={ColorsMap.primary} py="0.7rem" pl="0.8rem" fontSize={FontSizeMap.s}>
-          Показать ещё
-        </Text>
-      </Footer>
-    </Wrapper>
+      <div className={classes.footer}>
+        <p>Показать ещё</p>
+      </div>
+    </div>
   )
 }

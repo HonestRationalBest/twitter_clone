@@ -1,35 +1,37 @@
+import { makeStyles, Theme } from '@material-ui/core'
 import React from 'react'
-import styled from 'styled-components'
-import { FontSizeMap, FontWeightMap, ColorsMap } from '../../utils/Theme'
-import { Text } from '../Text'
+import { FontSizeMap, ColorsMap } from '../../utils/Theme'
 
 export interface InfoBlockThemeProps {
   theme: string
   tweetsCount: string
 }
 
-const Wrapper = styled.div`
-  padding: 0.7rem 0;
-  border-top: 1px solid ${ColorsMap.borders};
-  &:hover {
-    background: ${ColorsMap.infoblockHover};
-  }
-`
+export const useInfoBlockThemeStyles = makeStyles((theme: Theme) => ({
+  wrapper: {
+    padding: '0.7rem 0',
+    borderTop: `1px solid ${ColorsMap.borders}`,
+    fontSize: FontSizeMap.s,
+    paddingLeft: '0.8rem',
+    '&:hover ': {
+      background: ColorsMap.infoblockHover,
+    },
+    '& p': {
+      color: ColorsMap.secondary,
+    },
+  },
+}))
 
 export const InfoBlockTheme: React.FC<InfoBlockThemeProps> = ({
   theme,
   tweetsCount,
 }: InfoBlockThemeProps): React.ReactElement => {
+  const classes = useInfoBlockThemeStyles()
+
   return (
-    <Wrapper>
-      <Text as="h6" pl="0.8rem" fontSize={FontSizeMap.s} fontWeight={FontWeightMap.black}>
-        {theme}
-      </Text>
-      <Text
-        fontSize={FontSizeMap.s}
-        pl="0.8rem"
-        textColor={ColorsMap.secondary}
-      >{`Твитов: ${tweetsCount}`}</Text>
-    </Wrapper>
+    <div className={classes.wrapper}>
+      <h4>{theme}</h4>
+      <p>{`Твитов: ${tweetsCount}`}</p>
+    </div>
   )
 }

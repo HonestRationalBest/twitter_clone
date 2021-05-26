@@ -37,12 +37,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern .gitignore ./",
-    "lint:fix": "npm run lint -- --fix",
     "test:typescript": "tsc --pretty --noEmit",
     "precommit": "lint-staged",
     "prepush": "npm run test:typescript",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "json": "json-server --watch data.json"
   },
   "eslintConfig": {
     "extends": [

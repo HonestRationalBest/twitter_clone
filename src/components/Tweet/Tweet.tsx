@@ -5,13 +5,12 @@ import RepostIcon from '@material-ui/icons/RepeatOutlined'
 import LikeIcon from '@material-ui/icons/FavoriteBorderOutlined'
 import ShareIcon from '@material-ui/icons/ReplyOutlined'
 
-import { useHomeStyles } from '../../pages/Home/Home'
-import { Avatar, Grid, IconButton, Paper, Typography } from '@material-ui/core'
-import { Box } from '../Box'
+import { Avatar, Grid, IconButton, makeStyles, Paper, Theme, Typography } from '@material-ui/core'
+import { grey } from '@material-ui/core/colors'
+import { ColorsMap } from '../../utils/Theme'
 
 export interface TweetProps {
   text: string
-  classes: ReturnType<typeof useHomeStyles>
   user: {
     fullname: string
     username: string
@@ -19,14 +18,56 @@ export interface TweetProps {
   }
 }
 
-export const Tweet: React.FC<TweetProps> = ({
-  text,
-  user,
-  classes,
-}: TweetProps): React.ReactElement => {
+export const useTweetStyles = makeStyles((theme: Theme) => ({
+  tweet: {
+    cursor: 'pointer',
+    paddingTop: 15,
+    paddingLeft: 20,
+    '&:hover': {
+      backgroundColor: `${ColorsMap.hover}`,
+    },
+  },
+  tweetAvatar: {
+    width: theme.spacing(5),
+    height: theme.spacing(5),
+  },
+  tweetFooter: {
+    display: 'flex',
+    position: 'relative',
+    left: -13,
+    justifyContent: 'space-between',
+    width: 450,
+  },
+  tweetUserName: {
+    color: grey[500],
+  },
+  tweetsHeader: {
+    borderTop: '0',
+    borderLeft: '0',
+    borderRight: '0',
+    borderRadius: '0',
+    padding: '0.625rem 1rem',
+    borderBottom: `1px solid ${ColorsMap.borders}`,
+    '& h6': {
+      fontSize: '1rem',
+      fontWeight: 800,
+      padding: '0.4rem 0',
+      margin: '0 0 0 0.5rem',
+    },
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 11fr 1fr',
+    gridGap: '0rem 0.5rem',
+  },
+}))
+
+export const Tweet: React.FC<TweetProps> = ({ text, user }: TweetProps): React.ReactElement => {
+  const classes = useTweetStyles()
+
   return (
     <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined">
-      <Box display="grid" gridTemplateColumns="1fr 11fr 1fr" gridGap="0rem 0.5rem">
+      <div className={classes.grid}>
         <Grid item xs={1}>
           <Avatar
             className={classes.tweetAvatar}
@@ -70,7 +111,7 @@ export const Tweet: React.FC<TweetProps> = ({
             </div>
           </div>
         </Grid>
-      </Box>
+      </div>
     </Paper>
   )
 }

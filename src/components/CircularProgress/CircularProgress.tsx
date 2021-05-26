@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import Box from '@material-ui/core/Box'
 import { makeStyles, Theme } from '@material-ui/core'
 import { ColorsMap, FontSizeMap } from '../../utils/Theme'
-import { Text } from '../Text'
-
+import classNames from 'classnames'
 export interface CircularStaticProps {
   text: string
 }
@@ -13,32 +11,45 @@ interface CircularProgressWithLabelProps {
   value: number
 }
 
-export const useStyles = makeStyles((theme: Theme) => ({
+export const useCircularStyles = makeStyles((theme: Theme) => ({
   circularProgressBox: {
     width: '1.9rem',
     height: '1.9rem',
+    position: 'relative',
+    display: 'inline-flex',
     '& .MuiCircularProgress-root': {
       color: ColorsMap.primary,
     },
   },
-  circularProgressBoxError: {
-    width: '1.9rem',
-    height: '1.9rem',
+  error: {
     '& .MuiCircularProgress-root': {
       color: ColorsMap.error,
     },
   },
-  circularProgressBoxWarning: {
-    width: '1.9rem',
-    height: '1.9rem',
+  warning: {
     '& .MuiCircularProgress-root': {
       color: ColorsMap.warning,
+    },
+  },
+  textWrapper: {
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    position: 'absolute',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '& p': {
+      fontSize: FontSizeMap.s,
+      margin: ' 0.8rem 0.65rem 0 0',
+      textColor: ColorsMap.secondary,
     },
   },
 }))
 
 const CircularProgressWithLabel: React.FC<CircularProgressWithLabelProps> = ({ value }) => {
-  const classes = useStyles()
+  const classes = useCircularStyles()
   const [percent, setPercent] = useState<number>(100)
 
   useEffect(() => {
@@ -48,33 +59,20 @@ const CircularProgressWithLabel: React.FC<CircularProgressWithLabelProps> = ({ v
   }, [value])
 
   return (
-    <Box
-      position="relative"
-      display="inline-flex"
+    <div
       className={
         value >= 280
-          ? classes.circularProgressBoxError
+          ? classNames(classes.error, classes.circularProgressBox)
           : value > 260
-          ? classes.circularProgressBoxWarning
+          ? classNames(classes.warning, classes.circularProgressBox)
           : classes.circularProgressBox
       }
     >
       <CircularProgress variant="determinate" value={Math.round(percent)} />
-      <Box
-        top={0}
-        left={0}
-        bottom={0}
-        right={0}
-        position="absolute"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Text fontSize={FontSizeMap.s} mt="0.8rem" mr="0.65rem" textColor={ColorsMap.secondary}>
-          {value >= 280 ? `${280 - value}` : value > 260 ? `${280 - value}` : ''}
-        </Text>
-      </Box>
-    </Box>
+      <div className={classes.textWrapper}>
+        <p>{value >= 280 ? `${280 - value}` : value > 260 ? `${280 - value}` : ''}</p>
+      </div>
+    </div>
   )
 }
 
