@@ -10,6 +10,10 @@ import { InfoBlock } from '../../components/InfoBlock'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectTweetsItems } from '../../store/ducks/tweets/selectors'
 import { fetchTweets } from '../../store/ducks/tweets/actionCreaters'
+import { fetchUsers } from '../../store/ducks/popularChannels/actionCreaters'
+import { selectUsersItems } from '../../store/ducks/popularChannels/selectors'
+import { fetchTrends } from '../../store/ducks/trends/actionCreaters'
+import { selectTrendsItems } from '../../store/ducks/trends/selectors'
 
 interface HomeProps {}
 
@@ -57,28 +61,17 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
 const Home: React.FC<HomeProps> = (): React.ReactElement => {
   const classes = useHomeStyles()
 
-  const testArrayTheme = [
-    { theme: 'Понимаю', tweetsCount: '2131' },
-    { theme: 'Понимаю', tweetsCount: '2131' },
-  ]
-
-  const testArrayChanel = [
-    {
-      name: 'Alexey Navalny',
-      chanelId: '@navalny',
-      avaSrc:
-        'https://i.picsum.photos/id/413/536/354.jpg?hmac=gWzeJ37G-MqxxyO9UpTc_dK2Bu77KvFEugYCzbdHXOA',
-      avaAlt: 'avaAlt',
-    },
-  ]
-
   const tweets = useSelector(selectTweetsItems)
+  const users = useSelector(selectUsersItems)
+  const trends = useSelector(selectTrendsItems)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchTweets())
+    dispatch(fetchUsers())
+    dispatch(fetchTrends())
   }, [dispatch])
-
+  console.log(trends)
   return (
     <div className={classes.mainWrapper}>
       <div>
@@ -110,8 +103,8 @@ const Home: React.FC<HomeProps> = (): React.ReactElement => {
       <div className={classes.infoBlockWrapper}>
         <div className={classes.fixed}>
           <SearchInput />
-          <InfoBlock blockName="Актуальные темы для вас" items={testArrayTheme} type="theme" />
-          <InfoBlock blockName="Кого читать" items={testArrayChanel} type="chanel" />
+          <InfoBlock blockName="Актуальные темы для вас" items={trends} type="theme" />
+          <InfoBlock blockName="Кого читать" items={users} type="chanel" />
         </div>
       </div>
     </div>

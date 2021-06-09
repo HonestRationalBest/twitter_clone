@@ -1,13 +1,15 @@
 //@ts-nocheck
 import { makeStyles, Theme } from '@material-ui/core'
 import React from 'react'
+import { User } from '../../store/ducks/popularChannels/contracts/state'
+import { Trend } from '../../store/ducks/trends/contracts/state'
 import { ColorsMap, FontWeightMap, BorderRadiusMap, FontSizeMap } from '../../utils/Theme'
-import { InfoBlockChanel, InfoBlockChanelProps } from '../InfoBlockChanel/InfoBlockChanel'
-import { InfoBlockTheme, InfoBlockThemeProps } from '../InfoBlockTheme/InfoBlockTheme'
+import { InfoBlockChanel } from '../InfoBlockChanel/InfoBlockChanel'
+import { InfoBlockTheme } from '../InfoBlockTheme/InfoBlockTheme'
 
 export interface InfoBlockProps {
   blockName: string
-  items: Array<InfoBlockThemeProps | InfoBlockChanelProps>
+  items: Array<Trend | User>
   type: 'theme' | 'chanel'
 }
 
@@ -55,12 +57,7 @@ export const InfoBlock: React.FC<InfoBlockProps> = ({
           })
         : items.map((el) => {
             return (
-              <InfoBlockChanel
-                name={el.name}
-                chanelId={el.chanelId}
-                avaSrc={el.avaSrc}
-                avaAlt={el.avaAlt}
-              />
+              <InfoBlockChanel name={el.name} username={el.username} avatarUrl={el.avatarUrl} />
             )
           })}
       <div className={classes.footer}>

@@ -4,9 +4,8 @@ import { FontSizeMap, FontWeightMap, ColorsMap, BorderRadiusMap } from '../../ut
 
 export interface InfoBlockChanelProps {
   name: string
-  chanelId: string
-  avaSrc: string
-  avaAlt: string
+  username: string
+  avatarUrl: string
 }
 
 export const useInfoBlockChanelStyles = makeStyles((theme: Theme) => ({
@@ -43,6 +42,9 @@ export const useInfoBlockChanelStyles = makeStyles((theme: Theme) => ({
     fontWeight: 'bold',
     '& p': {
       fontSize: FontSizeMap.s,
+      maxWidth: '91px',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
     },
   },
   chanelId: {
@@ -53,18 +55,17 @@ export const useInfoBlockChanelStyles = makeStyles((theme: Theme) => ({
 
 export const InfoBlockChanel: React.FC<InfoBlockChanelProps> = ({
   name,
-  chanelId,
-  avaSrc,
-  avaAlt,
+  username,
+  avatarUrl,
 }: InfoBlockChanelProps): React.ReactElement => {
   const classes = useInfoBlockChanelStyles()
 
   return (
     <div className={classes.wrapper}>
-      <img src={avaSrc} alt={avaAlt} className={classes.avatar} />
+      <img src={avatarUrl} alt="avaAlt" className={classes.avatar} />
       <div className={classes.textWrapper}>
         <p>{name}</p>
-        <p className={classes.chanelId}>{chanelId}</p>
+        <p className={classes.chanelId}>@{username}</p>
       </div>
       <button>Читать</button>
     </div>

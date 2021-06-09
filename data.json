@@ -90,5 +90,57 @@
         "avatarUrl": "https://source.unsplash.com/random/100X100?4"
       }
     }
+  ],
+  "popularChanels": [
+    {
+      "_id": "60c0967ca57571a22ee29805",
+      "name": "Flores Campbell",
+      "username": "jennings",
+      "avatarUrl": "https://source.unsplash.com/random/100X100?4"
+    },
+    {
+      "_id": "60c0967c4f69507ac34d63cf",
+      "name": "Robles Montgomery",
+      "username": "kaye",
+      "avatarUrl": "https://source.unsplash.com/random/100X100?1"
+    },
+    {
+      "_id": "60c0967c9b348e6f3c235b2f",
+      "name": "Craig Espinoza",
+      "username": "william",
+      "avatarUrl": "https://source.unsplash.com/random/100X100?5"
+    }
+  ],
+  "trends": [
+    {
+      "_id": "60c09a1d69fa47984e400d44",
+      "theme": "Беларусь",
+      "tweetsCount": 4233,
+      "avatarUrl": "https://source.unsplash.com/random/100X100?4"
+    },
+    {
+      "_id": "60c09a1dc0a2c247f9ab4dbb",
+      "theme": "Россия",
+      "tweetsCount": 2427,
+      "avatarUrl": "https://source.unsplash.com/random/100X100?3"
+    },
+    {
+      "_id": "60c09a1d19f8738905ab151d",
+      "theme": "Навальный",
+      "tweetsCount": 6453,
+      "avatarUrl": "https://source.unsplash.com/random/100X100?5"
+    },
+    {
+      "_id": "60c09a1daead1df321a26170",
+      "theme": "Думаю",
+      "tweetsCount": 8324,
+      "avatarUrl": "https://source.unsplash.com/random/100X100?1"
+    },
+    {
+      "_id": "60c09e926defb4fc95918deb",
+      "theme": "Оооо",
+      "tweetsCount": 6535,
+      "avatarUrl": "https://source.unsplash.com/random/100X100?1"
+    }
   ]
 }

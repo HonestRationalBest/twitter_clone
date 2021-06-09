@@ -3,6 +3,8 @@ import { rootReduceer } from './rootReducer'
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './sagas'
 import { TweetsState } from './ducks/tweets/contracts/state'
+import { UsersState } from './ducks/popularChannels/contracts/state'
+import { TrendsState } from './ducks/trends/contracts/state'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -13,6 +15,8 @@ declare global {
 }
 export interface RootState {
   tweets: TweetsState
+  popularChannels: UsersState
+  trends: TrendsState
 }
 
 const composeEnhancers =
