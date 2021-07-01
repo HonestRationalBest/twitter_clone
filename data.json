@@ -62,33 +62,6 @@
         "username": "mabel",
         "avatarUrl": "https://source.unsplash.com/random/100X100?8"
       }
-    },
-    {
-      "_id": "609a55efe2210b12311e4dc7",
-      "text": "sit qui Lorem exercitation aliquip nostrud irure ut magna aliqua",
-      "user": {
-        "fullname": "Rene Norton",
-        "username": "melody",
-        "avatarUrl": "https://source.unsplash.com/random/100X100?9"
-      }
-    },
-    {
-      "_id": "609a55ef99c8e2559461a9a9",
-      "text": "velit nostrud amet proident laborum tempor officia enim aliqua minim",
-      "user": {
-        "fullname": "Mercer Bright",
-        "username": "glenn",
-        "avatarUrl": "https://source.unsplash.com/random/100X100?4"
-      }
-    },
-    {
-      "_id": "609a55efde908c180005e5ae",
-      "text": "laboris ea nulla aute officia aliquip voluptate amet qui nostrud",
-      "user": {
-        "fullname": "Kerri Lowe",
-        "username": "dominique",
-        "avatarUrl": "https://source.unsplash.com/random/100X100?4"
-      }
     }
   ],
   "popularChanels": [

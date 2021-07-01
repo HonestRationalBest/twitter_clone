@@ -30,14 +30,16 @@ export const FullTweet: React.FC<FullTweetProps> = ({ classes }): React.ReactEle
     return null
   }
   return (
-    <div className={classes.tweetsHeader}>
-      <div className={classes.tweetHeader}>
-        <Link to="/home">
-          <ArrowBackIcon />
-        </Link>
-        <h6>Твит</h6>
+    <>
+      <div className={classes.tweetsHeader}>
+        <div className={classes.tweetHeader}>
+          <Link to="/home">
+            <ArrowBackIcon />
+          </Link>
+          <h6>Твит</h6>
+        </div>
       </div>
       {tweet.data && <Tweet {...tweet.data} />}
-    </div>
+    </>
   )
 }

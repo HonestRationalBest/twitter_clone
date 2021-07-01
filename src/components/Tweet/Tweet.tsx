@@ -53,7 +53,6 @@ export const useTweetStyles = makeStyles((theme: Theme) => ({
     borderRight: '0',
     borderRadius: '0',
     padding: '0.625rem 1rem',
-    borderBottom: `1px solid ${ColorsMap.borders}`,
     '& h6': {
       fontSize: '1rem',
       fontWeight: 800,

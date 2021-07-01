@@ -12,6 +12,8 @@ import { IconButton, makeStyles, Theme } from '@material-ui/core'
 import CropOriginalIcon from '@material-ui/icons/CropOriginal'
 import MoodIcon from '@material-ui/icons/Mood'
 import { CircularStatic } from '../CircularProgress/CircularProgress'
+import { useDispatch } from 'react-redux'
+import { fetchAddTweet } from '../../store/ducks/tweets/actionCreaters'
 
 export interface NewTweetSectionProps {
   avatarUrl?: string
@@ -111,8 +113,14 @@ export const NewTweetSection: React.FC<NewTweetSectionProps> = ({
 }) => {
   const classes = useNewTweetSectionStyles()
 
+  const dispatch = useDispatch()
   const [disabled, setDisbled] = useState<boolean>(false)
   const [textAreaContent, setTextAreaContent] = useState<string>('')
+
+  const handleClickAddTweet = (): void => {
+    dispatch(fetchAddTweet(textAreaContent))
+    setTextAreaContent('')
+  }
 
   useEffect(() => {
     if (textAreaContent.length > 280) {
@@ -149,7 +157,9 @@ export const NewTweetSection: React.FC<NewTweetSectionProps> = ({
           </div>
           <div className={classes.progressButtonWrapper}>
             <CircularStatic text={textAreaContent} />
-            <button disabled={disabled}>Твитнуть</button>
+            <button disabled={disabled} onClick={handleClickAddTweet}>
+              Твитнуть
+            </button>
           </div>
         </div>
       </div>

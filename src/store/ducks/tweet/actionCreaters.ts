@@ -1,5 +1,4 @@
 import { Action } from 'redux'
-import { Tweet } from '../tweets/contracts/state'
 import { LoadingState, TweetState } from './contracts/state'
 
 export enum TweetActionsType {

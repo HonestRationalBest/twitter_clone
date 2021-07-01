@@ -1,7 +1,13 @@
-//@ts-nocheck
+// @ts-nocheck
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { TweetsApi } from '../../../services/api/tweetsApi'
-import { setLoadingStateTweets, setTweets, TweetsActionsType } from './actionCreaters'
+import {
+  addTweet,
+  FetchAddTweetActionInterface,
+  setLoadingStateTweets,
+  setTweets,
+  TweetsActionsType,
+} from './actionCreaters'
 import { LoadingState } from './contracts/state'
 
 export function* fetchTweetsRequest() {
@@ -13,6 +19,25 @@ export function* fetchTweetsRequest() {
   }
 }
 
+export function* fetchAddTweetsRequest({ payload }: FetchAddTweetActionInterface) {
+  try {
+    const data = {
+      _id: Math.random().toString(36).substr(2),
+      text: payload,
+      user: {
+        fullname: 'Test user',
+        username: 'test',
+        avatarUrl: 'https://source.unsplash.com/random/100X100?6',
+      },
+    }
+    const item = yield call(TweetsApi.fetchAddTweet, data)
+    yield put(addTweet(item))
+  } catch (e) {
+    yield put(setLoadingStateTweets(LoadingState.ERROR))
+  }
+}
+
 export function* tweetsSaga() {
   yield takeLatest(TweetsActionsType.FETCH_TWEETS, fetchTweetsRequest)
+  yield takeLatest(TweetsActionsType.FETCH_ADD_TWEET, fetchAddTweetsRequest)
 }

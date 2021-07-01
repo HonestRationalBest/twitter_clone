@@ -14,4 +14,10 @@ export const TweetsApi = {
       .then(({ data }) => data)
       .catch((e) => console.log(e))
   },
+  fetchAddTweet(payload: Tweet): Promise<Tweet> {
+    return axios
+      .post(`http://localhost:3000/tweets`, payload)
+      .then(({ data }) => data)
+      .catch((e) => console.log(e))
+  },
 }

@@ -38,10 +38,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "test:typescript": "tsc --pretty --noEmit",
-    "precommit": "lint-staged",
-    "prepush": "npm run test:typescript",
-    "storybook": "start-storybook -p 6006",
-    "json": "json-server --watch data.json"
+    "json": "json-server --watch data.json --id _id"
   },
   "eslintConfig": {
     "extends": [
