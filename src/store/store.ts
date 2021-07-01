@@ -5,6 +5,7 @@ import rootSaga from './sagas'
 import { TweetsState } from './ducks/tweets/contracts/state'
 import { UsersState } from './ducks/popularChannels/contracts/state'
 import { TrendsState } from './ducks/trends/contracts/state'
+import { TweetState } from './ducks/tweet/contracts/state'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -17,6 +18,7 @@ export interface RootState {
   tweets: TweetsState
   popularChannels: UsersState
   trends: TrendsState
+  tweet: TweetState
 }
 
 const composeEnhancers =

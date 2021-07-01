@@ -14,13 +14,14 @@ import { fetchUsers } from '../../store/ducks/popularChannels/actionCreaters'
 import { selectUsersItems } from '../../store/ducks/popularChannels/selectors'
 import { fetchTrends } from '../../store/ducks/trends/actionCreaters'
 import { selectTrendsItems } from '../../store/ducks/trends/selectors'
-
+import { Route } from 'react-router-dom'
+import { FullTweet } from './components/FullTweet'
 interface HomeProps {}
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
   mainWrapper: {
     display: 'grid',
-    gridTemplateColumns: '4.4fr 1.6fr 6fr',
+    gridTemplateColumns: '2.5fr 6.5fr 3fr',
     gridGap: '0rem 2rem',
     maxWidth: 1070,
     margin: '0 auto',
@@ -56,6 +57,14 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
       margin: '0 0 0 0.5rem',
     },
   },
+  tweetHeader: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    '& p': {
+      marginRight: '10px',
+    },
+  },
 }))
 
 const Home: React.FC<HomeProps> = (): React.ReactElement => {
@@ -71,7 +80,7 @@ const Home: React.FC<HomeProps> = (): React.ReactElement => {
     dispatch(fetchUsers())
     dispatch(fetchTrends())
   }, [dispatch])
-  console.log(trends)
+
   return (
     <div className={classes.mainWrapper}>
       <div>
@@ -89,15 +98,24 @@ const Home: React.FC<HomeProps> = (): React.ReactElement => {
       <div>
         {' '}
         <div className={classes.tweetsWrapper}>
-          <div className={classes.tweetsHeader}>
-            <h6>Главная</h6>
-          </div>
-          <div className={classes.newTweetSectionWrapper}>
-            <NewTweetSection />
-          </div>
-          {tweets.map((el) => {
-            return <Tweet key={el._id} text={el.text} user={el.user} />
-          })}
+          <Route path="/home" exact>
+            <div className={classes.tweetsHeader}>
+              <h6>Главная</h6>
+            </div>
+          </Route>
+          <Route path="/home/tweet">
+            <FullTweet classes={classes} />
+          </Route>
+          <Route path="/home" exact>
+            <div className={classes.newTweetSectionWrapper}>
+              <NewTweetSection />
+            </div>
+          </Route>
+          <Route path="/home" exact>
+            {tweets.map((tweet) => {
+              return <Tweet key={tweet._id} {...tweet} />
+            })}
+          </Route>
         </div>
       </div>
       <div className={classes.infoBlockWrapper}>

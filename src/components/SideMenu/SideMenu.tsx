@@ -8,6 +8,7 @@ import BookmarkIcon from '@material-ui/icons/BookmarkBorderOutlined'
 import ListIcon from '@material-ui/icons/ListAltOutlined'
 import UserIcon from '@material-ui/icons/PermIdentityOutlined'
 import { IconButton, makeStyles, Theme, Typography } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 interface SideMenuProps {}
 
@@ -78,9 +79,11 @@ export const SideMenu: React.FC<SideMenuProps> = (): React.ReactElement => {
   return (
     <ul className={classes.sideMenuList}>
       <li className={classes.sideMenuListItem}>
-        <IconButton className={classes.logo} aria-label="">
-          <TwitterIcon className={classes.logoIcon} />
-        </IconButton>
+        <Link to="/home">
+          <IconButton className={classes.logo} aria-label="">
+            <TwitterIcon className={classes.logoIcon} />
+          </IconButton>
+        </Link>
       </li>
       <li className={classes.sideMenuListItem}>
         <div>

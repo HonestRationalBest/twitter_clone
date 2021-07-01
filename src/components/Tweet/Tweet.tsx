@@ -8,9 +8,11 @@ import ShareIcon from '@material-ui/icons/ReplyOutlined'
 import { Avatar, Grid, IconButton, makeStyles, Paper, Theme, Typography } from '@material-ui/core'
 import { grey } from '@material-ui/core/colors'
 import { ColorsMap } from '../../utils/Theme'
+import { Link } from 'react-router-dom'
 
 export interface TweetProps {
   text: string
+  _id: string
   user: {
     fullname: string
     username: string
@@ -25,6 +27,10 @@ export const useTweetStyles = makeStyles((theme: Theme) => ({
     paddingLeft: 20,
     '&:hover': {
       backgroundColor: `${ColorsMap.hover}`,
+    },
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'none',
     },
   },
   tweetAvatar: {
@@ -62,56 +68,62 @@ export const useTweetStyles = makeStyles((theme: Theme) => ({
   },
 }))
 
-export const Tweet: React.FC<TweetProps> = ({ text, user }: TweetProps): React.ReactElement => {
+export const Tweet: React.FC<TweetProps> = ({
+  text,
+  user,
+  _id,
+}: TweetProps): React.ReactElement => {
   const classes = useTweetStyles()
 
   return (
     <Paper className={classNames(classes.tweet, classes.tweetsHeader)} variant="outlined">
-      <div className={classes.grid}>
-        <Grid item xs={1}>
-          <Avatar
-            className={classes.tweetAvatar}
-            alt={`Аватарка пользователя ${user.fullname}`}
-            src={user.avatarUrl}
-          />
-        </Grid>
-        <Grid item xs={11}>
-          <Typography>
-            <b>{user.fullname}</b>&nbsp;
-            <span className={classes.tweetUserName}>@{user.username}</span>&nbsp;
-            <span className={classes.tweetUserName}>·</span>&nbsp;
-            <span className={classes.tweetUserName}>1 ч</span>
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            {text}
-          </Typography>
-          <div className={classes.tweetFooter}>
-            <div>
-              <IconButton>
-                <CommentIcon style={{ fontSize: 20 }} />
-              </IconButton>
-              <span>1</span>
+      <Link to={`/home/tweet/${_id}`}>
+        <div className={classes.grid}>
+          <Grid item xs={1}>
+            <Avatar
+              className={classes.tweetAvatar}
+              alt={`Аватарка пользователя ${user.fullname}`}
+              src={user.avatarUrl}
+            />
+          </Grid>
+          <Grid item xs={11}>
+            <Typography>
+              <b>{user.fullname}</b>&nbsp;
+              <span className={classes.tweetUserName}>@{user.username}</span>&nbsp;
+              <span className={classes.tweetUserName}>·</span>&nbsp;
+              <span className={classes.tweetUserName}>1 ч</span>
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              {text}
+            </Typography>
+            <div className={classes.tweetFooter}>
+              <div>
+                <IconButton>
+                  <CommentIcon style={{ fontSize: 20 }} />
+                </IconButton>
+                <span>1</span>
+              </div>
+              <div>
+                <IconButton>
+                  <RepostIcon style={{ fontSize: 20 }} />
+                </IconButton>
+                <span>1</span>
+              </div>
+              <div>
+                <IconButton>
+                  <LikeIcon style={{ fontSize: 20 }} />
+                </IconButton>
+                <span>1</span>
+              </div>
+              <div>
+                <IconButton>
+                  <ShareIcon style={{ fontSize: 20 }} />
+                </IconButton>
+              </div>
             </div>
-            <div>
-              <IconButton>
-                <RepostIcon style={{ fontSize: 20 }} />
-              </IconButton>
-              <span>1</span>
-            </div>
-            <div>
-              <IconButton>
-                <LikeIcon style={{ fontSize: 20 }} />
-              </IconButton>
-              <span>1</span>
-            </div>
-            <div>
-              <IconButton>
-                <ShareIcon style={{ fontSize: 20 }} />
-              </IconButton>
-            </div>
-          </div>
-        </Grid>
-      </div>
+          </Grid>
+        </div>
+      </Link>
     </Paper>
   )
 }

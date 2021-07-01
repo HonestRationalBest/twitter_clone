@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { makeStyles, Theme } from '@material-ui/core'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { User } from '../../store/ducks/popularChannels/contracts/state'
 import { Trend } from '../../store/ducks/trends/contracts/state'
 import { ColorsMap, FontWeightMap, BorderRadiusMap, FontSizeMap } from '../../utils/Theme'
@@ -18,6 +19,10 @@ export const useInfoBlockStyles = makeStyles((theme: Theme) => ({
     background: ColorsMap.infoblock,
     borderRadius: BorderRadiusMap.default,
     marginTop: '1rem',
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'none',
+    },
   },
   header: {
     '& h3': {
@@ -53,7 +58,11 @@ export const InfoBlock: React.FC<InfoBlockProps> = ({
       </div>
       {type === 'theme'
         ? items.map((el) => {
-            return <InfoBlockTheme theme={el.theme} tweetsCount={el.tweetsCount} />
+            return (
+              <Link to={`/home/search?q=${el._id}`}>
+                <InfoBlockTheme theme={el.theme} tweetsCount={el.tweetsCount} />
+              </Link>
+            )
           })
         : items.map((el) => {
             return (
