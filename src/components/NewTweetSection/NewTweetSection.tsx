@@ -11,9 +11,12 @@ import TextareaAutosize from 'react-textarea-autosize'
 import { IconButton, makeStyles, Theme } from '@material-ui/core'
 import CropOriginalIcon from '@material-ui/icons/CropOriginal'
 import MoodIcon from '@material-ui/icons/Mood'
+import Snackbar from '@material-ui/core/Snackbar'
 import { CircularStatic } from '../CircularProgress/CircularProgress'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchAddTweet } from '../../store/ducks/tweets/actionCreaters'
+import { selectAddFromState } from '../../store/ducks/tweets/selectors'
+import { AddFormState } from '../../store/ducks/tweets/contracts/state'
 
 export interface NewTweetSectionProps {
   avatarUrl?: string
@@ -112,18 +115,29 @@ export const NewTweetSection: React.FC<NewTweetSectionProps> = ({
   avatarUrl = 'https://i.picsum.photos/id/413/536/354.jpg?hmac=gWzeJ37G-MqxxyO9UpTc_dK2Bu77KvFEugYCzbdHXOA',
 }) => {
   const classes = useNewTweetSectionStyles()
-
+  const addFormState = useSelector(selectAddFromState)
   const dispatch = useDispatch()
   const [disabled, setDisbled] = useState<boolean>(false)
   const [textAreaContent, setTextAreaContent] = useState<string>('')
+  const [visibleSnackbar, setVisibleSnackbar] = useState<boolean>(false)
 
   const handleClickAddTweet = (): void => {
     dispatch(fetchAddTweet(textAreaContent))
     setTextAreaContent('')
   }
 
+  const handleCloseSnackbar = (): void => {
+    setVisibleSnackbar(true)
+  }
+
   useEffect(() => {
-    if (textAreaContent.length > 280) {
+    if (addFormState === AddFormState.ERROR) {
+      setVisibleSnackbar(true)
+    }
+  }, [addFormState])
+
+  useEffect(() => {
+    if (textAreaContent.length > 280 || !textAreaContent) {
       setDisbled(true)
     } else {
       setDisbled(false)
@@ -131,6 +145,7 @@ export const NewTweetSection: React.FC<NewTweetSectionProps> = ({
   }, [textAreaContent])
   return (
     <div className={classes.newTweetSectionWrapper}>
+      <Snackbar open={visibleSnackbar} onClose={handleCloseSnackbar} message="Ошибка" />
       <img className={classes.avatar} src={avatarUrl} alt="avatarUrl" />
       <div className={classes.textAreaWrapper}>
         <TextareaAutosize

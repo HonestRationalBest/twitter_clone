@@ -62,6 +62,42 @@
         "username": "mabel",
         "avatarUrl": "https://source.unsplash.com/random/100X100?8"
       }
+    },
+    {
+      "_id": "46w2x76u55h",
+      "text": "Hello",
+      "user": {
+        "fullname": "Test user",
+        "username": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?6"
+      }
+    },
+    {
+      "_id": "q9fm5swude",
+      "text": "Lol",
+      "user": {
+        "fullname": "Test user",
+        "username": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?6"
+      }
+    },
+    {
+      "_id": "wbl6bznxprs",
+      "text": "dfxgsdfg",
+      "user": {
+        "fullname": "Test user",
+        "username": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?6"
+      }
+    },
+    {
+      "_id": "6d6s0g1t6hc",
+      "text": "SDafadfa",
+      "user": {
+        "fullname": "Test user",
+        "username": "test",
+        "avatarUrl": "https://source.unsplash.com/random/100X100?6"
+      }
     }
   ],
   "popularChanels": [

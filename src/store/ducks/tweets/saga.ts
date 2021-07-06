@@ -4,11 +4,12 @@ import { TweetsApi } from '../../../services/api/tweetsApi'
 import {
   addTweet,
   FetchAddTweetActionInterface,
+  setAddFormState,
   setLoadingStateTweets,
   setTweets,
   TweetsActionsType,
 } from './actionCreaters'
-import { LoadingState } from './contracts/state'
+import { AddFormState, LoadingState } from './contracts/state'
 
 export function* fetchTweetsRequest() {
   try {
@@ -33,7 +34,7 @@ export function* fetchAddTweetsRequest({ payload }: FetchAddTweetActionInterface
     const item = yield call(TweetsApi.fetchAddTweet, data)
     yield put(addTweet(item))
   } catch (e) {
-    yield put(setLoadingStateTweets(LoadingState.ERROR))
+    yield put(setAddFormState(AddFormState.ERROR))
   }
 }
 
