@@ -80,6 +80,7 @@ const Home: React.FC<HomeProps> = (): React.ReactElement => {
     dispatch(fetchUsers())
     dispatch(fetchTrends())
   }, [dispatch])
+  console.log(tweets)
 
   return (
     <div className={classes.mainWrapper}>
@@ -112,9 +113,10 @@ const Home: React.FC<HomeProps> = (): React.ReactElement => {
             </div>
           </Route>
           <Route path="/home" exact>
-            {tweets.map((tweet) => {
-              return <Tweet key={tweet._id} {...tweet} />
-            })}
+            {tweets &&
+              tweets.map((tweet) => {
+                return <Tweet key={tweet._id} {...tweet} />
+              })}
           </Route>
         </div>
       </div>

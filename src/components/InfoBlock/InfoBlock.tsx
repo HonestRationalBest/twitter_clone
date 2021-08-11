@@ -57,14 +57,16 @@ export const InfoBlock: React.FC<InfoBlockProps> = ({
         <h3 as="h3">{blockName}</h3>
       </div>
       {type === 'theme'
-        ? items.map((el) => {
+        ? items &&
+          items.map((el) => {
             return (
               <Link to={`/home/search?q=${el._id}`}>
                 <InfoBlockTheme theme={el.theme} tweetsCount={el.tweetsCount} />
               </Link>
             )
           })
-        : items.map((el) => {
+        : items &&
+          items.map((el) => {
             return (
               <InfoBlockChanel name={el.name} username={el.username} avatarUrl={el.avatarUrl} />
             )

@@ -11,8 +11,8 @@ import { LoadingState } from './contracts/state'
 
 export function* fetchTweetRequest({ payload: tweetId }: FetchTweetActionInterface) {
   try {
-    const data: Tweet[] = yield call(TweetsApi.fetchTweet, tweetId)
-    yield put(setTweet(data[0]))
+    const data: Tweet = yield call(TweetsApi.fetchTweet, tweetId)
+    yield put(setTweet(data))
   } catch (e) {
     yield put(setLoadingStateTweet(LoadingState.ERROR))
   }
